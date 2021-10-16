@@ -1,8 +1,12 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
+const fetch = require('node-fetch');
 
 // import the markdown generation
 const generateMarkdown = require('./utils/generateMarkdown.js');
+
+// import the writeFile Function
+const writeFile = require('./utils/writeFile.js');
 
 // TODO: Create an array of questions for user input
 const questions = [{
@@ -20,13 +24,13 @@ const questions = [{
     },
     {
         type: 'input',
-        name: 'discription',
-        message: 'Enter a discription for your project (Required)',
+        name: 'description',
+        message: 'Enter a description for your project (Required)',
         validate: userInput => {
             if (userInput) {
                 return true;
             } else {
-                console.log('Please enter a project discription!');
+                console.log('Please enter a project description!');
                 return false;
             }
         }
@@ -116,82 +120,14 @@ const questions = [{
         }
     },
     {
-        type: 'list',
-        name: 'license',
-        message: 'What Licence is this project released under? (Check all that apply)',
-        choices: ['MIT', 'Apache 2.0', 'GPL v3', 'BSD', 'Other'],
-        default: 0
-    },
-    {
-        type: 'list',
-        name: 'BSD-V',
-        message: 'Which BSD Licence?:',
-        choices: ['2-Clause', '3-Clause', '4-Clause'],
-        default: 0,
-        when: ({ license }) => {
-            if (license === 'BSD') {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    },
-    {
         type: 'input',
-        name: 'otherLicence',
-        message: 'Provide the Licence name:',
-        when: ({ license }) => {
-            if (license === 'Other') {
-                return true;
-            } else {
-                return false;
-            }
-        },
+        name: 'licenseHolder',
+        message: 'Who is the Copyright holder of this project:',
         validate: userInput => {
             if (userInput) {
                 return true;
             } else {
-                console.log('Please enter the name of the Licence!');
-                return false;
-            }
-        }
-    },
-    {
-        type: 'input',
-        name: 'licenceAgreement',
-        message: 'Provide the Licence Agreemnet:',
-        when: ({ license }) => {
-            if (license === 'Other') {
-                return true;
-            } else {
-                return false;
-            }
-        },
-        validate: userInput => {
-            if (userInput) {
-                return true;
-            } else {
-                console.log('Please enter the Licence Agreement!');
-                return false;
-            }
-        }
-    },
-    {
-        type: 'input',
-        name: 'licenceBadge',
-        message: 'Provide the Licence Badge:',
-        when: ({ license }) => {
-            if (license === 'Other') {
-                return true;
-            } else {
-                return false;
-            }
-        },
-        validate: userInput => {
-            if (userInput) {
-                return true;
-            } else {
-                console.log('Please enter the Licence Badge!');
+                console.log('Please enter the name of the Licence holder!');
                 return false;
             }
         }
@@ -199,7 +135,7 @@ const questions = [{
     {
         type: 'checkbox',
         name: 'techBadges',
-        message: 'What technologies where used in this project? (Check all that apply)',
+        message: 'What technologies were used in this project? (Check all that apply)',
         choices: ['HTML', 'CSS', 'Bootstrap', 'JavaScript', 'jQuery', 'Node.js', 'Other'],
 
     },
@@ -258,7 +194,7 @@ const questions = [{
     },
     {
         type: 'input',
-        name: 'contributing',
+        name: 'tests',
         message: 'Provide the Tests info:',
         when: ({ confirmTests }) => {
             if (confirmTests) {
@@ -275,17 +211,233 @@ const questions = [{
                 return false;
             }
         }
+    },
+    {
+        type: 'confirm',
+        name: 'confirmQuestions',
+        message: 'Would you like to include a Questions section?',
+        default: true
+    },
+    {
+        type: 'input',
+        name: 'gitUser',
+        message: 'Enter your GitHub username:',
+        when: ({ confirmQuestions }) => {
+            if (confirmQuestions) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    },
+    {
+        type: 'input',
+        name: 'userEmail',
+        message: 'Enter your email address:',
+        when: ({ confirmQuestions }) => {
+            if (confirmQuestions) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+    }
+];
+const licenseQuestions = [{
+        type: 'list',
+        name: 'license',
+        message: 'What License is this project released under?',
+        choices: ['MIT', 'Apache 2.0', 'GPL v3', 'BSD', 'Other', 'Other-Manual'],
+        default: 0
+    },
+    {
+        type: 'list',
+        name: 'BSD-V',
+        message: 'Which BSD License?:',
+        choices: ['2-Clause', '3-Clause', '3-Clause-Clear'],
+        default: 0,
+        when: ({ license }) => {
+            if (license === 'BSD') {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    },
+    {
+        type: 'input',
+        name: 'otherLicense',
+        message: 'Provide the License name:',
+        when: ({ license }) => {
+            if (license === 'Other') {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        validate: userInput => {
+            if (userInput) {
+                return true;
+            } else {
+                console.log('Please enter the name of the License!');
+                return false;
+            }
+        }
+    },
+    {
+        type: 'input',
+        name: 'otherLicense',
+        message: 'Provide the License name:',
+        when: ({ license }) => {
+            if (license === 'Other-Manual') {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        validate: userInput => {
+            if (userInput) {
+                return true;
+            } else {
+                console.log('Please enter the name of the License!');
+                return false;
+            }
+        }
+    },
+    {
+        type: 'input',
+        name: 'licenseAgreement',
+        message: 'Provide the License Agreement:',
+        when: ({ license }) => {
+            if (license === 'Other-Manual') {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        validate: userInput => {
+            if (userInput) {
+                return true;
+            } else {
+                console.log('Please enter the License Agreement!');
+                return false;
+            }
+        }
     }
 ];
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+//DUMMY DATA FOR TESTING
+const dummyData = {
+    name: "Test Project One",
+    description: "THis is a great project to do tests with because its so great people always are coming right up o my face with tears streaming down from their eyes and they tell me this",
+    confirmTOC: true,
+    confirmInstall: true,
+    confirmUsage: true,
+    confirmCredit: true,
+    confirmContribute: true,
+    confirmTests: true,
+    confirmQuestions: true,
+    gitUser: 'Qcent',
+    userEmail: 'dquinn8@cogeco.ca',
+    install: "Hard and deep on your opperating system",
+    usage: "Like the dirty little slut she is",
+    credit: "All me, all the time, all day, all long",
+    contributing: "Do it to it brotha",
+    tests: "test Away boys",
+    licenseHolder: 'Davey Jones',
+    license: 'MIB',
+    techBadges: 'jQuery, CSS'
+};
+// asks for licence and then tries to fetch it
+const promptLicense = projectData => {
+
+    console.log(`
+  =================
+  Add a License
+  =================
+  `);
+
+    return inquirer.prompt(licenseQuestions)
+        .then(license => {
+            // adds the license data to the projectData object
+            projectData.license = license.license;
+            projectData.liceExtras = license;
+            /* extra license figurin' */
+
+            if (projectData.license === 'BSD') {
+                switch (projectData.liceExtras['BSD-V']) {
+                    case '2-Clause':
+                        projectData.license = 'bsd-2-clause';
+                        break;
+                    case '3-Clause':
+                        projectData.license = 'bsd-3-clause';
+                        break;
+                    case '3-Clause-Clear':
+                        projectData.license = 'bsd-3-clause-clear';
+                        break;
+                }
+            }
+
+            if (projectData.license === 'Apache 2.0') { projectData.license = 'apache-2.0'; }
+            if (projectData.license === 'GPL v3') { projectData.license = 'gpl-3.0'; }
+
+            /* */
+
+            // fulfill the promise and return the data the user has built
+            return projectData;
+        })
+        .then(fetchLicense);
+};
+
+//Use API to search for license info
+const fetchLicense = (project) => {
+    console.log(project);
+    if (project.license === 'Other-Manual') {
+        project.license = project.liceExtras.otherLicense;
+        project.licenseAgreement = project.liceExtras.licenseAgreement;
+
+        return new Promise((x, y) => x(project));
+    }
+
+    if (project.license === 'Other') {
+        project.license = project.liceExtras.otherLicense;
+    }
+
+    return new Promise((resolve, reject) => {
+        fetch(`https://api.github.com/licenses/${project.license}`, {
+                headers: { Accept: 'application/vnd.github.v3+json', }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message == 'Not Found') {
+                    // reject('No Match')
+                    console.log(`No Match for ${project.license} License`);
+                    resolve(promptLicense(project)); // recursivly run till we get a match
+
+                } else {
+                    console.log('License Found')
+                    project.license = data.spdx_id;
+                    project.licenseLink = data.html_url;
+                    project.licenseAgreement = data.body
+                    resolve(project);
+                }
+            })
+            .catch(err => console.log(err));
+    });
+};
 
 // TODO: Create a function to initialize app
 function init() {
-    return inquirer.prompt(questions);
-}
+    //return inquirer.prompt(questions);
+    return new Promise((yay, nay) => {
+        yay(dummyData);
+    });
+};
 
 // Function call to initialize app
 init()
-    .then(data => console.log(data))
+    .then(promptLicense)
+    .then(data => generateMarkdown(data))
+    .then(markdown => console.log(markdown))
+    .catch(err => console.log(err));
