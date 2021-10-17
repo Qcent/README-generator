@@ -8,7 +8,7 @@ const generateMarkdown = require('./utils/generateMarkdown.js');
 // import the writeFile Function
 const writeFile = require('./utils/writeFile.js');
 
-// TODO: Create an array of questions for user input
+// Create an array of questions for user input
 const questions = [{
         type: 'input',
         name: 'name',
@@ -327,28 +327,6 @@ const licenseQuestions = [{
     }
 ];
 
-//DUMMY DATA FOR TESTING
-const dummyData = {
-    name: "Test Project One",
-    description: "THis is a great project to do tests with because its so great people always are coming right up o my face with tears streaming down from their eyes and they tell me this",
-    confirmTOC: true,
-    confirmInstall: true,
-    confirmUsage: true,
-    confirmCredit: true,
-    confirmContribute: true,
-    confirmTests: true,
-    confirmQuestions: true,
-    gitUser: 'Qcent',
-    userEmail: 'dquinn8@cogeco.ca',
-    install: "Hard and deep on your opperating system",
-    usage: "Like the dirty little slut she is",
-    credit: "All me, all the time, all day, all long",
-    contributing: "Do it to it brotha",
-    tests: "test Away boys",
-    licenseHolder: 'Davey Jones',
-    license: 'MIB',
-    techBadges: 'jQuery, CSS'
-};
 // asks for licence and then tries to fetch it
 const promptLicense = projectData => {
 
@@ -429,14 +407,12 @@ const fetchLicense = (project) => {
 // TODO: Create a function to initialize app
 function init() {
     return inquirer.prompt(questions);
-    return new Promise((yay, nay) => {
-        yay(dummyData);
-    });
 };
 
 // Function call to initialize app
 init()
     .then(promptLicense)
     .then(data => generateMarkdown(data))
-    .then(markdown => console.log(markdown))
+    .then(markdown => writeFile(markdown))
+    .then(status => console.log(status))
     .catch(err => console.log(err));
