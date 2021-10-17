@@ -20,9 +20,12 @@ A quick and easy command line tool to generate a README file in markdown formatt
 ## Installation
 
 Download the repository files and from the project directory run  
- ```  
+```  
  npm install  
 ```
+### *Notes: 
+* README.md Generator requires the npm modules: inquirer and node-fetch.
+* It also requires that you have Node.js installed on your machine
 
 ## Usage
 
@@ -31,6 +34,11 @@ To run the app, from the command line type ` node index.js ` then follow the on 
 [![App Demo](https://res.cloudinary.com/marcomontalbano/image/upload/v1634443246/video_to_markdown/images/google-drive--1mgXmWSktuPyuSB_SuYZMKyVrdvClRZyp-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://drive.google.com/file/d/1mgXmWSktuPyuSB_SuYZMKyVrdvClRZyp/view?usp=sharing "README.md Generator Demo")
 
 Once you have completed all questions your README.md will be created in the project's `./dist/` folder.
+
+### *Notes: 
+* Because the Inquirer module only excepts single line input a line return can be inserted into your response by entering  a space followed by two consecutive back slahes. ` \\` 
+* A license is required to be entered. You may choose from a list of preselected licenses, Search for one by name through the GitHub License API , or Manually enter your own License Info
+
 
 ## Credits
 This projects would not have been possible without the generous development efforts behind the following projects:  
