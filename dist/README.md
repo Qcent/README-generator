@@ -1,7 +1,7 @@
 
 # Test Project 95Aplha
  
- ![BSD-2-Clause](https://img.shields.io/badge/License-BSD-2-Clause-orange)  ![HTML](https://img.shields.io/badge/Tech-HTML-lightblue)  ![CSS](https://img.shields.io/badge/Tech-CSS-lightblue)  ![Node.js](https://img.shields.io/badge/Tech-Node.js-lightblue)  ![Gay%20Love%204%20Coding](https://img.shields.io/badge/Tech-Gay%20Love%204%20Coding-lightblue)  ![Determination](https://img.shields.io/badge/Tech-Determination-lightblue) 
+ ![BSD-2-Clause](https://img.shields.io/badge/License-BSD%202%20Clause-orange)  ![HTML](https://img.shields.io/badge/Tech-HTML-lightblue)  ![CSS](https://img.shields.io/badge/Tech-CSS-lightblue)  ![Node.js](https://img.shields.io/badge/Tech-Node.js-lightblue)  ![Gay%20Love%204%20Coding](https://img.shields.io/badge/Tech-Gay%20Love%204%20Coding-lightblue)  ![Determination](https://img.shields.io/badge/Tech-Determination-lightblue) 
 
 ## Description
 its a complicated project and noone understands it but its coder!  
