@@ -37,6 +37,7 @@ This projects would not have been possible without the generous development effo
  * [GitHub Api Licenses EndPoint](https://docs.github.com/en/rest/reference/licenses)  
  * [img.sheilds.io/badge API](https://shields.io/)  
  * [Node.js](https://nodejs.org/en/) 
+ * [Video-to-Markdown](https://github.com/marcomontalbano/video-to-markdown)
 
 ## Contributing
 
