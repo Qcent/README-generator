@@ -36,6 +36,34 @@ const questions = [{
         }
     },
     {
+        type: 'checkbox',
+        name: 'techBadges',
+        message: 'What technologies were used in this project? (Check all that apply)',
+        choices: ['HTML', 'CSS', 'Bootstrap', 'JavaScript', 'jQuery', 'Node.js', 'Other'],
+
+    },
+    {
+        type: 'input',
+        name: 'otherBadges',
+        message: 'Provide the other Technology used in a comma seperated list:',
+        when: ({ techBadges }) => {
+
+            if (techBadges.includes('Other')) {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        validate: userInput => {
+            if (userInput) {
+                return true;
+            } else {
+                console.log('Please enter the other Tech used!');
+                return false;
+            }
+        }
+    },
+    {
         type: 'confirm',
         name: 'confirmTOC',
         message: 'Would you like a Table of Contents section?',
@@ -128,34 +156,6 @@ const questions = [{
                 return true;
             } else {
                 console.log('Please enter the name of the Licence holder!');
-                return false;
-            }
-        }
-    },
-    {
-        type: 'checkbox',
-        name: 'techBadges',
-        message: 'What technologies were used in this project? (Check all that apply)',
-        choices: ['HTML', 'CSS', 'Bootstrap', 'JavaScript', 'jQuery', 'Node.js', 'Other'],
-
-    },
-    {
-        type: 'input',
-        name: 'otherBadges',
-        message: 'Provide the other Technology used in a comma seperated list:',
-        when: ({ techBadges }) => {
-
-            if (techBadges.includes('Other')) {
-                return true;
-            } else {
-                return false;
-            }
-        },
-        validate: userInput => {
-            if (userInput) {
-                return true;
-            } else {
-                console.log('Please enter the other Tech used!');
                 return false;
             }
         }

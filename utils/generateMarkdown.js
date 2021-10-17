@@ -153,7 +153,7 @@ ${outputTOC(project)}${outputInstall(project)}${outputUsage(project)}${outputCre
  // Create a function to generate markdown for README
  const generateMarkdown = (project) => {
      return new Promise((resolve, reject) => {
-         resolve(renderMarkdown(project));
+         resolve(renderMarkdown(project).replace(/ \\\\/g, ' \ \n')); // make "\\" a special character string to produce a new line
      });
  }
 
