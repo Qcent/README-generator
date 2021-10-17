@@ -36,6 +36,19 @@ const questions = [{
         }
     },
     {
+        type: 'input',
+        name: 'licenseHolder',
+        message: 'Who is the Copyright holder of this project:',
+        validate: userInput => {
+            if (userInput) {
+                return true;
+            } else {
+                console.log('Please enter the name of the Licence holder!');
+                return false;
+            }
+        }
+    },
+    {
         type: 'checkbox',
         name: 'techBadges',
         message: 'What technologies were used in this project? (Check all that apply)',
@@ -143,19 +156,6 @@ const questions = [{
                 return true;
             } else {
                 console.log('Please enter your acknowledgements!');
-                return false;
-            }
-        }
-    },
-    {
-        type: 'input',
-        name: 'licenseHolder',
-        message: 'Who is the Copyright holder of this project:',
-        validate: userInput => {
-            if (userInput) {
-                return true;
-            } else {
-                console.log('Please enter the name of the Licence holder!');
                 return false;
             }
         }

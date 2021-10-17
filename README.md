@@ -4,7 +4,7 @@
  ![BSL%201.0](https://img.shields.io/badge/License-BSL%201.0-orange)  ![Node.js](https://img.shields.io/badge/Tech-Node.js-lightblue)  ![Markdown](https://img.shields.io/badge/Tech-Markdown-lightblue)  ![node%20fetch](https://img.shields.io/badge/Tech-node%20fetch-lightblue)  ![Inquirer](https://img.shields.io/badge/Tech-Inquirer-lightblue) 
 
 ## Description
-A quick and easy command line tool to generate a README file in markdown formatting. Written in Node.js.   
+A quick and easy command line tool to generate a README file in markdown formatting. Written in Node.js.  
 
 ## Table of Contents
 
@@ -22,23 +22,25 @@ A quick and easy command line tool to generate a README file in markdown formatt
 Download the repository files and from the project directory run  
  ```  
  npm install  
- ```
+```
 
 ## Usage
 
-to run the app, from the command line type `node index.js` and follow the onscreen prompts.  
- ![App Demo](./assets/media/demo.gif) 
+To run the app, from the command line type ` node index.js ` then follow the on screen prompts 
+
+![App Demo](./assets/media/demo.mp4)
 
 ## Credits
-This project would not have been possible with out the generous development efforts behind the following projects: Node-fetch  
+This projects would not have been possible without the generous development efforts behind the following projects:  
+ Node-fetch  
  Inquirer  
- GitHub API  Licenses Endpoint   
- img.shields.io/badge API  
- Node.js  
+ GitHub Api Licenses EndPoint  
+ img.sheilds.io/badge API  
+ Node.js 
 
 ## Contributing
 
-Questions, comments, bug reports and contributions are more than welcome. Get in contact and let’s make some magic! 
+Questions, comments, bug reports and contributions are more than welcome. Get in contact and let's make some magic! 
 
 ## Questions
 
@@ -72,5 +74,3 @@ FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
                  
-
-     
