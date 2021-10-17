@@ -30,6 +30,8 @@ To run the app, from the command line type ` node index.js ` then follow the on 
 
 [![App Demo](https://res.cloudinary.com/marcomontalbano/image/upload/v1634443246/video_to_markdown/images/google-drive--1mgXmWSktuPyuSB_SuYZMKyVrdvClRZyp-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://drive.google.com/file/d/1mgXmWSktuPyuSB_SuYZMKyVrdvClRZyp/view?usp=sharing "README.md Generator Demo")
 
+Once you have completed all questions your README.md will be created in the projects `.\dist\` folder.
+
 ## Credits
 This projects would not have been possible without the generous development efforts behind the following projects:  
  * [Node-fetch](https://www.npmjs.com/package/node-fetch)
