@@ -63,7 +63,7 @@ ${project.licenseAgreement}
 
          return renderLicenseBadge(project.license) +
              project.techBadges.map(name => {
-                 return renderBadge('Tech', name.trim(), 'lightblue');
+                 return renderBadge('Tech', encodeURIComponent(name), 'lightblue');
              })
              .join('')
      }
@@ -122,7 +122,7 @@ ${project.tests}
              let hub, email = '';
 
              if (project.gitUser) {
-                 hub = "[GitHub: " + project.gitUser + "](https://github.com/" + project.gitUser + ")\n";
+                 hub = "[GitHub: " + project.gitUser + "](https://github.com/" + project.gitUser + ") \ \n";
              }
              if (project.userEmail) {
                  email = project.userEmail + "\n";
@@ -152,11 +152,8 @@ ${outputTOC(project)}${outputInstall(project)}${outputUsage(project)}${outputCre
 
  // TODO: Create a function to generate markdown for README
  const generateMarkdown = (project) => {
-     console.log(project);
      return new Promise((resolve, reject) => {
-
          resolve(renderMarkdown(project));
-
      });
  }
 
