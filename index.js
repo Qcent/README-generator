@@ -404,7 +404,7 @@ const fetchLicense = (project) => {
     });
 };
 
-// TODO: Create a function to initialize app
+// Create a function to initialize app
 function init() {
     return inquirer.prompt(questions);
 };

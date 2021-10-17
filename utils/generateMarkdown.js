@@ -1,4 +1,4 @@
- // TODO: Create a function that returns a license badge based on which license is passed in
+ // Create a function that returns a license badge based on which license is passed in
  // If there is no license, return an empty string
  const renderLicenseBadge = license => license ? ` ![${license}](https://img.shields.io/badge/License-${license}-orange) ` : '';
 
@@ -150,7 +150,7 @@ ${outputTOC(project)}${outputInstall(project)}${outputUsage(project)}${outputCre
      // blank sections lead to erronious blank lines so i strung them all together and insert the spaces as needed in the functions
  }
 
- // TODO: Create a function to generate markdown for README
+ // Create a function to generate markdown for README
  const generateMarkdown = (project) => {
      return new Promise((resolve, reject) => {
          resolve(renderMarkdown(project));
