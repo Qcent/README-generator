@@ -32,11 +32,11 @@ To run the app, from the command line type ` node index.js ` then follow the on 
 
 ## Credits
 This projects would not have been possible without the generous development efforts behind the following projects:  
- Node-fetch  
- Inquirer  
- GitHub Api Licenses EndPoint  
- img.sheilds.io/badge API  
- Node.js 
+ * [Node-fetch](https://www.npmjs.com/package/node-fetch)
+ * [Inquirer](https://www.npmjs.com/package/inquirer)
+ * [GitHub Api Licenses EndPoint](https://docs.github.com/en/rest/reference/licenses)  
+ * [img.sheilds.io/badge API](https://shields.io/)  
+ * [Node.js](https://nodejs.org/en/) 
 
 ## Contributing
 
