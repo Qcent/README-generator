@@ -24,7 +24,7 @@ Download the repository files and from the project directory run
  npm install  
 ```
  *Notes: 
-* README.md Generator requires the npm modules: inquirer and node-fetch.
+* README.md Generator requires the npm modules: inquirer and node-fetch v2.x.
 * It also requires that you have Node.js installed on your machine
 
 ## Usage
