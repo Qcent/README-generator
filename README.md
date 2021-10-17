@@ -23,7 +23,7 @@ Download the repository files and from the project directory run
 ```  
  npm install  
 ```
-### *Notes: 
+ *Notes: 
 * README.md Generator requires the npm modules: inquirer and node-fetch.
 * It also requires that you have Node.js installed on your machine
 
@@ -35,8 +35,8 @@ To run the app, from the command line type ` node index.js ` then follow the on 
 
 Once you have completed all questions your README.md will be created in the project's `./dist/` folder.
 
-### *Notes: 
-* Because the Inquirer module only excepts single line input a line return can be inserted into your response by entering  a space followed by two consecutive back slahes. ` \\` 
+ *Notes: 
+* Because the Inquirer module only excepts single line input a line return can be inserted into your response by entering  a space followed by two consecutive back slahes. ` " \\" ` 
 * A license is required to be entered. You may choose from a list of preselected licenses, Search for one by name through the GitHub License API , or Manually enter your own License Info
 
 
