@@ -392,7 +392,6 @@ const promptLicense = projectData => {
 
 //Use API to search for license info
 const fetchLicense = (project) => {
-    console.log(project);
     if (project.license === 'Other-Manual') {
         project.license = project.liceExtras.otherLicense;
         project.licenseAgreement = project.liceExtras.licenseAgreement;
@@ -429,7 +428,7 @@ const fetchLicense = (project) => {
 
 // TODO: Create a function to initialize app
 function init() {
-    //return inquirer.prompt(questions);
+    return inquirer.prompt(questions);
     return new Promise((yay, nay) => {
         yay(dummyData);
     });

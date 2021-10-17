@@ -50,8 +50,20 @@ ${project.licenseAgreement}
      // a function to create a list of badges
  const outputBadges = (project) => {
 
-         return renderLicenseBadge(project.license) + project.techBadges.split(',').map(name => {
-                 return renderBadge('tech', name.trim(), 'lightblue');
+         //if other badges were manualy entered convert them into the techBadge array
+         if (project.otherBadges) {
+             //remove 'Other' from techBadges Array it will be the last entry
+             project.techBadges.pop();
+
+             // add comma seperated items as indvidual array items
+             project.otherBadges.split(',').map(item => {
+                 project.techBadges.push(item.trim())
+             })
+         }
+
+         return renderLicenseBadge(project.license) +
+             project.techBadges.map(name => {
+                 return renderBadge('Tech', name.trim(), 'lightblue');
              })
              .join('')
      }
