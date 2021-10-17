@@ -137,7 +137,7 @@ const questions = [{
     {
         type: 'confirm',
         name: 'confirmCredit',
-        message: 'Would you like to Credit and other developers / 3rd parties?',
+        message: 'Would you like to Credit any other developers / 3rd parties?',
         default: true
     },
     {
