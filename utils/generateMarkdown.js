@@ -63,7 +63,7 @@ ${project.licenseAgreement}
 
          return renderLicenseBadge(encodeURIComponent(project.license.replace(/-/g, ' '))) +
              project.techBadges.map(name => {
-                 return renderBadge('Tech', encodeURIComponent(name), 'lightblue');
+                 return renderBadge('Tech', encodeURIComponent(name.replace(/-/g, ' ')), 'lightblue');
              })
              .join('')
      }
